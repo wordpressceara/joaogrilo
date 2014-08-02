@@ -1,0 +1,20 @@
+{
+	"name": "Projeto João Grilo Plugin WordPress",
+	"authors": [
+        {
+            "name": "Tiago Pires",
+            "email": "tao.tiago@hotmail.com"
+        }
+    ],
+    "require": {
+    	"php": ">=5.3.23"
+    },
+    "config": {
+    	"vendor-dir": "library"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"JoaoGrilo\\": "JoaoGrilo/"
+    	}
+    }
+}
