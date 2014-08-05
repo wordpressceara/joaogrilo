@@ -1,5 +1,5 @@
 ﻿=== João Grilo ===
-Contributors: Tiago Pires
+Contributors: Comunidade Wordpress Ceará
 Donate link: https://pagseguro.uol.com.br/checkout/v2/cart.html?action=add&action=add&itemCode=04644334C6C6D23EE4CF4FAA93CB51E6
 Tags: functions
 Requires at least: 3.0
