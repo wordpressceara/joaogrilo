@@ -4,12 +4,12 @@
  * Plugin Name: João Grilo
  * Plugin URI: https://github.com/wordpressceara/joaogrilo
  * Description: Esse projeto é um canivete suíço para desenvolvedores WordPress. Ele contém as mais variadas funções para customização do projeto.
- * Version: 0.1
+ * Version: 0.0.1
  * Author: Comunidade Wordpress Ceará
  * Author URI: https://www.facebook.com/groups/wordpressceara
  */
 
-if(!class_exists('Joao_Grilo')) :
+if(!class_exists('JoaoGrilo')) :
 	
 	class JoaoGrilo
 	{
@@ -19,7 +19,6 @@ if(!class_exists('Joao_Grilo')) :
 	    }
 	}
 	
-	$JoaoGrilo = new JoaoGrilo();
-	$JoaoGrilo->init();
+	JoaoGrilo::init();
 	
 endif;

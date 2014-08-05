@@ -25,9 +25,9 @@ Ex.:
 - No functions.php insira:
 ```php
 	$core = new \JoaoGrilo\Core();
-	$core->bytags();
+	$core->removeTags();
 ```
 Essa função remove as tags do admin.
 
-****** As funções estão separadas por tipo. ******
+##### As funções estão separadas por tipo. #####
 Ex.: Core, Math (Funções Matemáticas), Convert, etc...  
