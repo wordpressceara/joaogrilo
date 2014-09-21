@@ -42,13 +42,12 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
         /** Magic Methods *********************************************************/
 
         /**
-         * A dummy constructor to prevent JoaoGrilo_Settings_API from being loaded more than once.
+         * A dummy constructor to JoaoGrilo_Settings_API Class
          *
          * @since JoaoGrilo (1.0)
          * 
-         * @access private
+         * @access public
          * 
-         * @see JoaoGrilo_Settings_API::instance()
          */
         public function __construct() { 
             add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) ); 

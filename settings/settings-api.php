@@ -1,6 +1,6 @@
 <?php
 /**
- * WordPress settings API Demo Class
+ * WordPress Settings API Content Class
  *
  * @package JoaoGrilo
  *
@@ -18,7 +18,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API_Content' ) ) :
         private $settings_api;
 
         /**
-         * A constructor to JoaoGrilo_Settings_API
+         * A constructor to JoaoGrilo_Settings_API_Content
          *
          * @since JoaoGrilo (1.0)
          * 
@@ -50,6 +50,14 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API_Content' ) ) :
             $this->settings_api->admin_init();
         }
 
+        /**
+         * Add the Admin Sub Page in the options page
+         * 
+         * @since JoaoGrilo (1.0)
+         *
+         * @access public
+         * 
+         */
         public function admin_menu() {
             add_options_page( __('João Grilo', 'joao-grilo' ), __('João Grilo', 'joao-grilo'), 'manage_options',  'joao-grilo',  array($this, 'joaogrilo_plugin_page') );
         }
