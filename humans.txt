@@ -1,0 +1,22 @@
+/* TEAM */
+
+Name: Cicero Henrique Viana
+Title: Founding Developer
+Facebook: cicerohen
+
+Name: Tiago Pires
+Title: Founding Developer
+Facebook: tao.tiago
+
+Name: Renato Alves      
+Title: Lead Developer
+Facebook: renatonascalves
+	
+
+/* THANKS */							
+Name: cicerohen, tao.tiago, espellcaste
+                        
+
+/* META */
+Updated: 2014/09/20
+See: http://humanstxt.org/

@@ -1,5 +1,7 @@
 <?php
-namespace JoaoGrilo;
+
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 class Core{
 	// Remove as tags do admin 
