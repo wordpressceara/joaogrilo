@@ -73,8 +73,13 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API_Content' ) ) :
         public function get_settings_sections() {
             $sections = array(
                 array(
-                    'id' => 'joaogrilo_basics',
-                    'title' => __( 'Basic Settings', 'joao-grilo' )
+                    'id'        => 'joaogrilo_basics',
+                    'title'     => __( 'Basic Settings', 'joao-grilo' ),
+                ),
+
+                array(
+                    'id'        => 'joaogrilo_tags',
+                    'title'     => __( 'Tags Settings', 'joao-grilo' )
                 )
             );
             return $sections;
@@ -90,22 +95,40 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API_Content' ) ) :
          */
         public function get_settings_fields() {
             $settings_fields = array(
+
                 'joaogrilo_basics' => array(
 
                     array(
-                        'name' => 'checkbox-01',
-                        'label' => __( 'Checkbox', 'joao-grilo' ),
-                        'desc' => __( 'Checkbox Label', 'joao-grilo' ),
-                        'type' => 'checkbox'
+                        'name'      => 'checkbox-01',
+                        'label'     => __( 'Checkbox', 'joao-grilo' ),
+                        'desc'      => __( 'Checkbox Label', 'joao-grilo' ),
+                        'type'      => 'checkbox',
+                    ),
+
+                ),
+
+                'joaogrilo_tags' => array(
+
+                    array(
+                        'name'      => 'tags-checkbox-1',
+                        'label'     => __( 'Tags Column', 'joao-grilo' ),
+                        'desc'      => __( 'Remove Tags from Post Columns', 'joao-grilo' ),
+                        'type'      => 'checkbox',
                     ),
 
                     array(
-                        'name' => 'text-01',
-                        'label' => __( 'Site Name', 'joao-grilo' ),
-                        'desc' => __( 'Site Name', 'joao-grilo' ),
-                        'type' => 'text'
-                    )
+                        'name'      => 'tags-checkbox-2',
+                        'label'     => __( 'Tags Publish Box', 'joao-grilo' ),
+                        'desc'      => __( 'Remove Tags Publish Box', 'joao-grilo' ),
+                        'type'      => 'checkbox',
+                    ),
 
+                    array(
+                        'name'      => 'tags-checkbox-3',
+                        'label'     => __( 'Tag Page Restrict', 'joao-grilo' ),
+                        'desc'      => __( 'Restrict the Access to the Edit Post Tag', 'joao-grilo' ),
+                        'type'      => 'checkbox'
+                    )
                 )
             );
 

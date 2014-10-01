@@ -47,7 +47,7 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists('JoaoGrilo') ) :
 	
 	/**
-	 *  Plugin Class Constructor
+	 * Plugin Class Constructor
 	 *
 	 * @since JoaoGrilo (1.0)
 	 * 
@@ -142,7 +142,7 @@ if ( ! class_exists('JoaoGrilo') ) :
 
 			/** Versions **********************************************************/
 
-			$this->version    = '1.0';
+			$this->version    = '1.1';
 			$this->db_version = 1;
 
 			// Domain
@@ -170,13 +170,13 @@ if ( ! class_exists('JoaoGrilo') ) :
 		 *
 		 */
 		private function includes() {
-
-			// Classes
-			require( $this->plugin_dir . 'classes/core.php' );
 			
 			// Admin Menu Settings
 			require( $this->plugin_dir . 'settings/class-settings-api.php' );
 			require( $this->plugin_dir . 'settings/settings-api.php' );
+
+			// Classes
+			require( $this->plugin_dir . 'classes/core.php' );
 		}
 
 		/**
@@ -192,7 +192,6 @@ if ( ! class_exists('JoaoGrilo') ) :
 			// Main hooks
 			add_action( 'wp_joao-grilo_loaded',              array( $this, 'load_textdomain'     ), 0 );
 		}
-
 
 		/**
 		 * Loads the translation files
@@ -252,7 +251,7 @@ if ( ! class_exists('JoaoGrilo') ) :
 	if ( defined( 'JOAOGRILO_LATE_LOAD' ) ) {
 		add_action( 'plugins_loaded', 'joaogrilo', (int) JOAOGRILO_LATE_LOAD );
 
-	// "And now here's something we hope you'll really like!"
+	// "And now here's something I kinda hope you'll like!" =)
 	} else {
 		$GLOBALS['jg'] = joaogrilo();
 	}
