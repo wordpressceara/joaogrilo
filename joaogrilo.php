@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin João Grilo
+ * João Grilo Plugin
 *
-* João Grilo é um canivete suíço para desenvolvedores WordPress.
+* João Grilo is a tool to WordPress developers. It comes with several options intended to be used in the customization of your project.
 *
 * @package JoaoGrilo
 * 
@@ -11,7 +11,7 @@
 /*
 Plugin Name: João Grilo
 Plugin URI: https://github.com/wordpressceara/joaogrilo
-Description: O João Grilo é um canivete suíço para desenvolvedores WordPress. Ele contém as mais variadas funções para customização do projeto.
+Description: João Grilo is a tool to WordPress developers. It comes with several options intended to be used in the customization of your project.
 Version: 1.0
 Author: Comunidade Wordpress Ceará
 Author URI: https://www.facebook.com/groups/wordpressceara
@@ -172,7 +172,7 @@ if ( ! class_exists('JoaoGrilo') ) :
 		private function includes() {
 
 			// Classes
-			// require( $this->plugin_dir . 'classes/core.php' );
+			require( $this->plugin_dir . 'classes/core.php' );
 			
 			// Admin Menu Settings
 			require( $this->plugin_dir . 'settings/class-settings-api.php' );
