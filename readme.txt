@@ -1,39 +1,36 @@
-﻿=== João Grilo ===
-Contributors: Comunidade Wordpress Ceará
-Donate link: https://pagseguro.uol.com.br/checkout/v2/cart.html?action=add&action=add&itemCode=04644334C6C6D23EE4CF4FAA93CB51E6
-Tags: functions
-Requires at least: 3.0
-Tested up to: 3.9
-License: GPLv3
- 
+=== João Grilo ===
+Contributors: Comunidade WordPress Ceará
+Tags: function, development
+Requires at least: 3.8
+Tested up to: 4.0
+Stable tag: 4.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+O João Grilo é um canivete suíço para desenvolvedores WordPress. Ele contém as mais variadas funções para customização do projeto.
+
+
 == Description ==
- 
+
+João Grilo
+
+TODO
+
 == Installation ==
- 
-* Baixe o plugin.
-* Extraia o conteúdo e coloque na pasta plugins ou
-utilize a opção enviar no menu plugins.
-* Ative. E pronto!
 
-== Screenshots ==
-1.
-
-== Upgrade Notice ==
-None
+Para usá-lo basta colocar o plugin na pasta wp-content/plugins e depois ativá-lo no administrador do WordPress.
 
 == Changelog ==
 
 = 1.0 =
-*
+Added Seetings API Class
+Codebase rewritten
+Added DB Version
 
-== Frequently Asked Questions ==
-= Surgira mudanças. =
- 
-== License ==
- 
-This file is part of Nome do teu Plugin.
-Tao Form Ajax is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published
-by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-Nome do teu Plugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-You should have received a copy of the GNU General Public License along with Nome do teu Plugin. If not, see <http://www.gnu.org/licenses/>.
+= 0.1 =
+Initial Release
+
+== Upgrade Notice ==
+
+= 0.1 =
+Initial Release
