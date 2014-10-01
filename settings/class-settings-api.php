@@ -111,7 +111,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          *
          * @param array   $section
          */
-        function add_section( $section ) {
+        public function add_section( $section ) {
             $this->settings_sections[] = $section;
 
             return $this;
@@ -122,13 +122,13 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          *
          * @param array   $fields settings fields array
          */
-        function set_fields( $fields ) {
+        public function set_fields( $fields ) {
             $this->settings_fields = $fields;
 
             return $this;
         }
 
-        function add_field( $section, $field ) {
+        public function add_field( $section, $field ) {
             $defaults = array(
                 'name' => '',
                 'label' => '',
@@ -153,15 +153,23 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function admin_init() {
+        public function admin_init() {
 
             //register settings sections
             foreach ( $this->settings_sections as $section ) {
                 if ( false == get_option( $section['id'] ) ) {
-                    add_option( $section['id'] );
+                    // add_option( $section['id'] );
+
+                    $defaults = array();
+
+                    foreach ( $this->settings_fields[$section['id']] as $field ) {
+                        $defaults[$field['name']] = isset( $field['default'] ) ? $field['default'] : '';
+                    }
+
+                    add_option( $section['id'], $defaults );
                 }
 
-                if ( isset($section['desc']) && !empty($section['desc']) ) {
+                if ( isset($section['desc']) && ! empty($section['desc']) ) {
                     $section['desc'] = '<div class="inside">'. $section['desc'] . '</div>';
                     $callback = create_function('', 'echo "'. str_replace('"', '\"', $section['desc']) . '";');
                 
@@ -208,7 +216,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_text( $args ) {
+        public function callback_text( $args ) {
 
             $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
             $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
@@ -227,7 +235,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_checkbox( $args ) {
+        public function callback_checkbox( $args ) {
 
             $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 
@@ -246,7 +254,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_multicheck( $args ) {
+        public function callback_multicheck( $args ) {
 
             $value = $this->get_option( $args['id'], $args['section'], $args['std'] );
 
@@ -269,7 +277,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_radio( $args ) {
+        public function callback_radio( $args ) {
 
             $value = $this->get_option( $args['id'], $args['section'], $args['std'] );
 
@@ -291,7 +299,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_select( $args ) {
+        public function callback_select( $args ) {
 
             $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
             $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
@@ -314,7 +322,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_textarea( $args ) {
+        public function callback_textarea( $args ) {
 
             $value = esc_textarea( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
             $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
@@ -333,7 +341,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_html( $args ) {
+        public function callback_html( $args ) {
             echo $args['desc'];
         }
 
@@ -345,7 +353,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_wysiwyg( $args ) {
+        public function callback_wysiwyg( $args ) {
 
             $value = $this->get_option( $args['id'], $args['section'], $args['std'] );
             $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : '500px';
@@ -367,7 +375,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_file( $args ) {
+        public function callback_file( $args ) {
 
             $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
             $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
@@ -389,7 +397,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_password( $args ) {
+        public function callback_password( $args ) {
 
             $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
             $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
@@ -408,7 +416,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function callback_color( $args ) {
+        public function callback_color( $args ) {
 
             $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
             $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
@@ -425,7 +433,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function sanitize_options( $options ) {
+        public function sanitize_options( $options ) {
             foreach( $options as $option_slug => $option_value ) {
                 $sanitize_callback = $this->get_sanitize_callback( $option_slug );
 
@@ -449,7 +457,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function get_sanitize_callback( $slug = '' ) {
+        public function get_sanitize_callback( $slug = '' ) {
             if ( empty( $slug ) ) {
                 return false;
             }
@@ -480,7 +488,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
          * @since JoaoGrilo (1.0)
          * 
          */
-        function get_option( $option, $section, $default = '' ) {
+        public function get_option( $option, $section, $default = '' ) {
 
             $options = get_option( $section );
 
@@ -523,9 +531,10 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
             
             <div class="metabox-holder">
                 <div class="postbox">
+
                     <?php foreach ( $this->settings_sections as $form ) { ?>
                         
-                        <div id="<?php echo $form['id']; ?>" class="group">
+                        <div id="<?php echo $form['id']; ?>" class="group inside">
                             
                             <form method="post" action="options.php">
 
@@ -582,6 +591,7 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API' ) ) :
                     } else {
                         $('.group:first').fadeIn();
                     }
+
                     $('.group .collapsed').each(function(){
                         $(this).find('input:checked').parent().parent().parent().nextAll().each(
                         function(){

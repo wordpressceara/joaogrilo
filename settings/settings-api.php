@@ -93,10 +93,17 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API_Content' ) ) :
                 'joaogrilo_basics' => array(
 
                     array(
-                        'name' => 'checkbox',
+                        'name' => 'checkbox-01',
                         'label' => __( 'Checkbox', 'joao-grilo' ),
                         'desc' => __( 'Checkbox Label', 'joao-grilo' ),
                         'type' => 'checkbox'
+                    ),
+
+                    array(
+                        'name' => 'text-01',
+                        'label' => __( 'Site Name', 'joao-grilo' ),
+                        'desc' => __( 'Site Name', 'joao-grilo' ),
+                        'type' => 'text'
                     )
 
                 )
@@ -114,10 +121,12 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API_Content' ) ) :
         public function joaogrilo_plugin_page() { ?>
             <div class="wrap">
 
-                <h2>João Grilo</h2>
+                <h2><?php _e('João Grilo', 'joao-grilo'); ?></h2>
 
-                $this->settings_api->show_navigation();
-                $this->settings_api->show_forms(); 
+                <?php 
+
+                    $this->settings_api->show_navigation();
+                    $this->settings_api->show_forms(); 
 
                 ?>
 

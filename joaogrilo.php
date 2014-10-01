@@ -74,6 +74,7 @@ if ( ! class_exists('JoaoGrilo') ) :
 				$instance = new JoaoGrilo;
 				$instance->constants();
 				$instance->setup_globals();
+				$instance->setup_hooks();
 				$instance->includes();
 			}
 
@@ -142,7 +143,10 @@ if ( ! class_exists('JoaoGrilo') ) :
 			/** Versions **********************************************************/
 
 			$this->version    = '1.0';
-			$this->db_version = 100;
+			$this->db_version = 1;
+
+			// Domain
+			$this->domain = 'joao-grilo';
 
 			/** Paths**************************************************************/
 
@@ -168,11 +172,54 @@ if ( ! class_exists('JoaoGrilo') ) :
 		private function includes() {
 
 			// Classes
-			require( $this->plugin_dir . 'classes/core.php' );
+			// require( $this->plugin_dir . 'classes/core.php' );
 			
 			// Admin Menu Settings
 			require( $this->plugin_dir . 'settings/class-settings-api.php' );
 			require( $this->plugin_dir . 'settings/settings-api.php' );
+		}
+
+		/**
+		 * Setups some hooks to register post type stuff, scripts, set
+		 * the current user & load plugin's BuddyPress integration
+		 *
+		 * @since JoaoGrilo (1.0)
+		 *
+		 * @uses  add_action() to perform custom actions at key points
+		 */
+		private function setup_hooks() {
+			
+			// Main hooks
+			add_action( 'wp_joao-grilo_loaded',              array( $this, 'load_textdomain'     ), 0 );
+		}
+
+
+		/**
+		 * Loads the translation files
+		 *
+		 * @since JoaoGrilo (1.0)
+		 *
+		 * @uses get_locale() to get the language of WordPress config
+		 * @uses load_texdomain() to load the translation if any is available for the language
+		 */
+		public function load_textdomain() {
+
+			// Traditional WordPress plugin locale filter
+			$locale        = apply_filters( 'plugin_locale', get_locale(), $this->domain );
+			$mofile        = sprintf( '%1$s-%2$s.mo', $this->domain, $locale );
+
+			// Setup paths to current locale file
+			$mofile_local  = $this->lang_dir . $mofile;
+			$mofile_global = WP_LANG_DIR . '/' . $this->domain . '/' . $mofile;
+
+			// Look in global /wp-content/languages/joaogrilo
+			load_textdomain( $this->domain, $mofile_global );
+
+			// Look in local /wp-content/plugins/joaogrilo/jg-languages/ folder
+			load_textdomain( $this->domain, $mofile_local );
+
+			// Look in global /wp-content/languages/plugins/
+			load_plugin_textdomain( $this->domain );
 		}
 
 	}
@@ -209,5 +256,4 @@ if ( ! class_exists('JoaoGrilo') ) :
 	} else {
 		$GLOBALS['jg'] = joaogrilo();
 	}
-	
 endif;
