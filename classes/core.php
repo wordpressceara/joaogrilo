@@ -66,3 +66,39 @@ defined( 'ABSPATH' ) || exit;
 		}
 
 	}
+	
+	/**
+	 * Removing Version Information
+	 *
+	 * Removing Error Message on the Login Screen
+	 *
+	 * Restrict access to wp-admin
+	 */
+	$security_value = get_option( 'joaogrilo_security', '');
+	
+	if ( isset( $security_value['security-checkbox-1'] ) == 'on' ) {
+		remove_action('wp_head', 'wp_generator');
+	}
+	
+	if ( isset( $security_value['security-checkbox-2'] ) == 'on' ) {
+		add_filter('login_errors',create_function('$a', "return null;"));
+	}
+	
+	if ( isset( $security_value['security-checkbox-3'] ) == 'on' ) {
+		add_action( 'admin_init', 'joaogrilo_restringir_login', 1);
+	}
+	
+	function joaogrilo_restringir_login() {
+		
+		global $current_user;
+		
+		get_currentuserinfo();
+		
+		if ( $current_user->user_level < 4 ) {
+		
+		wp_redirect( get_bloginfo('url') );
+		
+		exit;
+		
+		}
+	}
