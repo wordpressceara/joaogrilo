@@ -81,6 +81,12 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API_Content' ) ) :
                     'id'        => 'joaogrilo_tags',
                     'title'     => __( 'Tags Settings', 'joao-grilo' )
                 )
+				,
+
+                array(
+                    'id'        => 'joaogrilo_security',
+                    'title'     => __( 'WP Security', 'joao-grilo' )
+                )
             );
             return $sections;
         }
@@ -129,7 +135,32 @@ if ( ! class_exists( 'JoaoGrilo_Settings_API_Content' ) ) :
                         'desc'      => __( 'Restrict the Access to the Edit Post Tag', 'joao-grilo' ),
                         'type'      => 'checkbox'
                     )
-                )
+                ),
+				
+				'joaogrilo_security' => array(
+
+                    array(
+                        'name'      => 'security-checkbox-1',
+                        'label'     => __( 'Version', 'joao-grilo' ),
+                        'desc'      => __( 'Remove Version Information', 'joao-grilo' ),
+                        'type'      => 'checkbox',
+                    ),
+				
+					array(
+                        'name'      => 'security-checkbox-2',
+                        'label'     => __( 'Error Message', 'joao-grilo' ),
+                        'desc'      => __( 'Remove Error Message on the Login Screen', 'joao-grilo' ),
+                        'type'      => 'checkbox',
+                    )
+					,
+				
+					array(
+                        'name'      => 'security-checkbox-3',
+                        'label'     => __( 'Restrict Access', 'joao-grilo' ),
+                        'desc'      => __( 'Restrict Access to wp-admin', 'joao-grilo' ),
+                        'type'      => 'checkbox',
+                    )
+				),
             );
 
             return $settings_fields;
