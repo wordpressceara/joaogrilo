@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 		function core_functions() {
 
 			// Basics Tags Options/Settings
-			$tags_value = get_option( 'joaogrilo_tags', 'Nada Encontrado' );
+			$tags_value = get_option( 'joaogrilo_tags', 'Nothing Found' );
 
 			if ( isset( $tags_value['tags-checkbox-1'] ) == 'on' ) {
 				add_filter( 'manage_posts_columns', 'joaogrilo_removetags_columns_filter' );
@@ -65,40 +65,4 @@ defined( 'ABSPATH' ) || exit;
 			wp_die( __("You don't have permission to see this page. Please, contact the admin.") );
 		}
 
-	}
-	
-	/**
-	 * Removing Version Information
-	 *
-	 * Removing Error Message on the Login Screen
-	 *
-	 * Restrict access to wp-admin
-	 */
-	$security_value = get_option( 'joaogrilo_security', '');
-	
-	if ( isset( $security_value['security-checkbox-1'] ) == 'on' ) {
-		remove_action('wp_head', 'wp_generator');
-	}
-	
-	if ( isset( $security_value['security-checkbox-2'] ) == 'on' ) {
-		add_filter('login_errors',create_function('$a', "return null;"));
-	}
-	
-	if ( isset( $security_value['security-checkbox-3'] ) == 'on' ) {
-		add_action( 'admin_init', 'joaogrilo_restringir_login', 1);
-	}
-	
-	function joaogrilo_restringir_login() {
-		
-		global $current_user;
-		
-		get_currentuserinfo();
-		
-		if ( $current_user->user_level < 4 ) {
-		
-		wp_redirect( get_bloginfo('url') );
-		
-		exit;
-		
-		}
 	}
