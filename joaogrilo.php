@@ -177,6 +177,7 @@ if ( ! class_exists('JoaoGrilo') ) :
 
 			// Classes
 			require( $this->plugin_dir . 'classes/core.php' );
+			require( $this->plugin_dir . 'classes/security.php' );
 		}
 
 		/**
